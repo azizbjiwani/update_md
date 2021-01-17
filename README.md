@@ -53,8 +53,7 @@ Apache Tomcat 9 Directories You’ll see the following files and directories und
 $ pwd /opt/mw/tomcat90 
 $ ls -ltr 
 ```
-> 
-total 144 
+> total 144 
 drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:10 work 
 drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:10 logs 
 drwxr-xr-x 7 wasadmin wasadmin 4096 Jun 3 13:11 webapps -rwxr-xr-x 1 wasadmin wasadmin 16262 Jun 3 13:13 RUNNING.txt -rwxr-xr-x 1 wasadmin wasadmin 6898 Jun 3 13:13 RELEASE-NOTES 
@@ -83,8 +82,7 @@ Startup Apache Tomcat To start Apache tomcat, we’ll use the script called cata
 ```sh
 $CATALINA_HOME/bin/catalina.sh start
 ```
-> 
-$ /opt/mw/tomcat90/bin/Catalina.sh start 
+> $ /opt/mw/tomcat90/bin/Catalina.sh start 
 Using CATALINA_BASE: /opt/mw/tomcat90 
 Using CATALINA_HOME: /opt/mw/tomcat90 
 Using CATALINA_TMPDIR: /opt/mw/tomcat90/temp 
@@ -95,8 +93,7 @@ Use grep command to verify whether the tomcat java process is started and runnin
 ```sh
 $ ps -ef | grep -i tomcat 
 ```
-> 
-wasadmin 12137 1 1 10:09 pts/3 00:00:03 /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64/jre//bin/java -Djava.util.logging.config.file=/opt/mw/tomcat90/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/mw/tomcat90/bin/bootstrap.jar:/opt/mw/tomcat90/bin/tomcat-juli.jar -Dcatalina.base=/opt/mw/tomcat90 -Dcatalina.home=/opt/mw/tomcat90 -Djava.io.tmpdir=/opt/mw/tomcat90/temp org.apache.catalina.startup.Bootstrap start
+> wasadmin 12137 1 1 10:09 pts/3 00:00:03 /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64/jre//bin/java -Djava.util.logging.config.file=/opt/mw/tomcat90/conf/logging.properties -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager -Djdk.tls.ephemeralDHKeySize=2048 -Djava.protocol.handler.pkgs=org.apache.catalina.webresources -Dorg.apache.catalina.security.SecurityListener.UMASK=0027 -Dignore.endorsed.dirs= -classpath /opt/mw/tomcat90/bin/bootstrap.jar:/opt/mw/tomcat90/bin/tomcat-juli.jar -Dcatalina.base=/opt/mw/tomcat90 -Dcatalina.home=/opt/mw/tomcat90 -Djava.io.tmpdir=/opt/mw/tomcat90/temp org.apache.catalina.startup.Bootstrap start
 
 > **Note:** : If it didn’t start, then you might have to set the JAVA_HOME location properly. Instructions are provided at the end of this document.
 
@@ -107,8 +104,7 @@ $ cd $CATALINA_HOME/logs
 $ cd /opt/mw/tomcat90/logs 
 $ more catalina.out 
 ```
-> 
-25-Jun-2020 10:04:49.644 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name: Apache Tomcat/9.0.36 
+> 25-Jun-2020 10:04:49.644 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version name: Apache Tomcat/9.0.36 
 25-Jun-2020 10:04:49.648 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built: Jun 3 2020 17:07:09 UTC 
 25-Jun-2020 10:04:49.648 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version number: 9.0.36.0 
 25-Jun-2020 10:04:49.648 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name: Linux 
@@ -193,15 +189,40 @@ $ rpm -qa | grep -i jre jre1.8.0_131-1.8.0_131-fcs.x86_64
 ```
 #### JDK Only
 Download Java 8 JDK only if you are installing JDK, you typically don’t have to install JRE separately as all the binary files that are included with JRE is also included with JDK. [Here][3] is the direct download link for JDK 8 Download 
-For 64-bit linux, download the jdk-8u131-linux-x64.rpm file, which is under “Linux x64” for 32-bit linux, download the jdk-8u131-linux-i586.rpm file, which is under “Linux x86” Install Java 8 JDK Only Install the Java 8 JDK on your system as shown below. $ rpm -ivh jdk-8u131-linux-x64.rpm –test Preparing… ################ [100%]
-
+For **64-bit** linux, download the jdk-8u131-linux-x64.rpm file, which is under “Linux x64” 
+For **32-bit** linux, download the jdk-8u131-linux-i586.rpm file, which is under “Linux x86” 
+Install Java 8 JDK Only Install the Java 8 JDK on your system as shown below. 
+```sh
+$ rpm -ivh jdk-8u131-linux-x64.rpm –test Preparing… ################ [100%]
 $ rpm -ivh jdk-8u131-linux-x64.rpm Preparing… ################ [100%] Updating / installing… 1:jdk1.8.0_131-2000:1.8.0_131-fcs ################ [100%] Unpacking JAR files… tools.jar… plugin.jar… javaws.jar… deploy.jar… rt.jar… jsse.jar… charsets.jar… localedata.jar…
+```
+Make sure that the jdk rpm is successfully installed. 
+```sh
+$ rpm -qa | grep -i jdk 
+jdk1.8.0_131-1.8.0_131-fcs.x86_64 
+```
+Java 8 JRE and JDK will be installed under  /usr/java directory as shown below. 
+> $ ls -l /usr/java/ 
+lrwxrwxrwx. 1 root root 16 Jun 1 16:55 default -> /usr/java/latest drwxr-xr-x. 9 root root 4096 Jun 1 17:03 jdk1.8.0_131 
+drwxr-xr-x. 7 root root 4096 Jun 1 16:55 jre1.8.0_131 
+lrwxrwxrwx. 1 root root 22 Jun 1 17:03 latest -> /usr/java/jdk1.8.0_131
 
-Make sure that the jdk rpm is successfully installed. $ rpm -qa | grep -i jdk jdk1.8.0_131-1.8.0_131-fcs.x86_64 Java 8 JRE and JDK File Locations By default, the above steps will install both jre and jdk under /usr/java directory as shown below. $ ls -l /usr/java/ lrwxrwxrwx. 1 root root 16 Jun 1 16:55 default -> /usr/java/latest drwxr-xr-x. 9 root root 4096 Jun 1 17:03 jdk1.8.0_131 drwxr-xr-x. 7 root root 4096 Jun 1 16:55 jre1.8.0_131 lrwxrwxrwx. 1 root root 22 Jun 1 17:03 latest -> /usr/java/jdk1.8.0_131
+The above ls output indicates that you can install multiple versions of jre or jdk on the same machine, as each and every version of the installation will get its own directory name with the version number in it. The java executable is used from the JRE location (and not from JDK location). When you have multiple java installed, to identify which version of the java executable is used system-wide, do the following: As shown below, the java executable is pointing to /usr/bin/java 
+> $ whereis java 
+java: /usr/bin/java /usr/lib/java /etc/java /usr/share/java /usr/share/man/man1/java.1.gz 
 
-The above ls output indicates that you can install multiple versions of jre or jdk on the same machine, as each and every version of the installation will get its own directory name with the version number in it. The java executable is used from the JRE location (and not from JDK location). When you have multiple java installed, to identify which version of the java executable is used system-wide, do the following: As shown below, the java executable is pointing to /usr/bin/java $ whereis java java: /usr/bin/java /usr/lib/java /etc/java /usr/share/java /usr/share/man/man1/java.1.gz The /usr/bin/java is really pointing to the java in /etc/alternatives directory. $ ls -l /usr/bin/java lrwxrwxrwx 1 root root 22 Apr 19 01:55 /usr/bin/java -> /etc/alternatives/java Finally, as you see here, the etc alternatives java is pointing to the java executable from the Java 8 JRE that we installed. $ ls -l /etc/alternatives/java lrwxrwxrwx 1 root root 73 Apr 19 01:55 /etc/alternatives/java -> /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64/jre/bin/java
+The /usr/bin/java is really pointing to the java in /etc/alternatives directory. 
 
-How to deploy a Java web application on Tomcat The below two methods are the most common ways about how to deploy a Java web application on Tomcat. 1) Copying web application archive file (.war). In this method, the web application is packed as a WAR file. You may generate the WAR file using a tool or IDE like Eclipse, or someone just sent you the file. Copy the WAR file into $CATALINA_HOME/webapps directory. cp /tmp/ HelloWorld.war /opt/mw/tomcat90/webapps Restart the server. Whenever Tomcat is started, it will unpack the WAR file it found in the webapps directory and launch the application in that manner. $ $CATALINA_HOME/bin/catalina.sh stop $ $CATALINA_HOME/bin/catalina.sh start wasadmin@elvmae036:TEST: HelloWorld > pwd /opt/mw/tomcat90/webapps/ HelloWorld
+> $ ls -l /usr/bin/java 
+lrwxrwxrwx 1 root root 22 Apr 19 01:55 /usr/bin/java -> /etc/alternatives/java 
+
+Finally, as you see here, the etc alternatives java is pointing to the java executable from the Java 8 JRE that we installed. 
+
+> $ ls -l /etc/alternatives/java lrwxrwxrwx 1 root root 73 Apr 19 01:55 /etc/alternatives/java -> /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el7_7.x86_64/jre/bin/java
+
+###**Deployment**
+How to deploy a Java web application on Tomcat 
+The below two methods are the most common ways about how to deploy a Java web application on Tomcat. 1) Copying web application archive file (.war). In this method, the web application is packed as a WAR file. You may generate the WAR file using a tool or IDE like Eclipse, or someone just sent you the file. Copy the WAR file into $CATALINA_HOME/webapps directory. cp /tmp/ HelloWorld.war /opt/mw/tomcat90/webapps Restart the server. Whenever Tomcat is started, it will unpack the WAR file it found in the webapps directory and launch the application in that manner. $ $CATALINA_HOME/bin/catalina.sh stop $ $CATALINA_HOME/bin/catalina.sh start wasadmin@elvmae036:TEST: HelloWorld > pwd /opt/mw/tomcat90/webapps/ HelloWorld
 
 wasadmin@elvmae036:TEST: HelloWorld > ls -ltr
 -rwxr-xr-x 1 wasadmin wasadmin  636 Jul 30  2007 index.html
