@@ -222,8 +222,17 @@ Finally, as you see here, the etc alternatives java is pointing to the java exec
 
 ###**Deployment**
 How to deploy a Java web application on Tomcat 
-The below two methods are the most common ways about how to deploy a Java web application on Tomcat. 1) Copying web application archive file (.war). In this method, the web application is packed as a WAR file. You may generate the WAR file using a tool or IDE like Eclipse, or someone just sent you the file. Copy the WAR file into $CATALINA_HOME/webapps directory. cp /tmp/ HelloWorld.war /opt/mw/tomcat90/webapps Restart the server. Whenever Tomcat is started, it will unpack the WAR file it found in the webapps directory and launch the application in that manner. $ $CATALINA_HOME/bin/catalina.sh stop $ $CATALINA_HOME/bin/catalina.sh start wasadmin@elvmae036:TEST: HelloWorld > pwd /opt/mw/tomcat90/webapps/ HelloWorld
-
+The below two methods are the most common ways about how to deploy a Java web application on Tomcat. 
+**1)** **Copying web application archive file (.war).** 
+In this method, the web application is packed as a WAR file. You may generate the WAR file using a tool or IDE like Eclipse, or someone just sent you the file. Copy the WAR file into 
+```sh
+$CATALINA_HOME/webapps 
+cp /tmp/HelloWorld.war /opt/mw/tomcat90/webapps 
+```
+Restart the server. Whenever Tomcat is started, it will unpack the WAR file it found in the webapps directory and launch the application in that manner. 
+>$ $CATALINA_HOME/bin/catalina.sh stop 
+$ $CATALINA_HOME/bin/catalina.sh start 
+wasadmin@elvmae036:TEST: HelloWorld > pwd /opt/mw/tomcat90/webapps/ HelloWorld
 wasadmin@elvmae036:TEST: HelloWorld > ls -ltr
 -rwxr-xr-x 1 wasadmin wasadmin  636 Jul 30  2007 index.html
 -rwxr-xr-x 1 wasadmin wasadmin  376 Jul 30  2007 hello.jsp
@@ -231,26 +240,28 @@ drwxr-xr-x 4 wasadmin wasadmin 4096 Jun 25 10:07 WEB-INF
 drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 25 10:07 META-INF
 drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 25 10:07 images
 
-NOTE: Later if you want to update changes for the application, you must both replace the WAR 	file and delete the application’s unpacked directory, and then restart Tomcat.
+> **Note:** Later if you want to update changes for the application, you must both replace the WAR 	file and delete the application’s unpacked directory, and then restart Tomcat.
 http://elvmae036.nwie.net:8080/HelloWorld/
  
-  2)    Copying unpacked web application directory.
+  **2)**    **Copying unpacked web application directory**
 In this method, you have the web application in its unpacked form.
-      	Copy the application’s directory from its location into $CATALINA_HOME/webapps directory.
+Copy the application’s directory from its location into $CATALINA_HOME/webapps directory.
+```sh
 cp -r /tmp/HelloWorld /opt/mw/tomcat90/webapps/
-      	Restart the server, the application is deployed with the context path is name of the directory 	you copied.
-$ $CATALINA_HOME/bin/catalina.sh stop
+```
+Restart the server, the application is deployed with the context path is name of the directory 	you copied.
+
+>$ $CATALINA_HOME/bin/catalina.sh stop
 $ $CATALINA_HOME/bin/catalina.sh start
 wasadmin@elvmae036:TEST: HelloWorld > pwd
 /opt/mw/tomcat90/webapps/ HelloWorld
-
 wasadmin@elvmae036:TEST: HelloWorld > ls -ltr
 -rwxr-xr-x 1 wasadmin wasadmin  636 Jul 30  2007 index.html
 -rwxr-xr-x 1 wasadmin wasadmin  376 Jul 30  2007 hello.jsp
 drwxr-xr-x 4 wasadmin wasadmin 4096 Jun 25 10:07 WEB-INF
 drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 25 10:07 META-INF
 drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 25 10:07 images
-NOTE: If you want to update changes for the application, you must replace the corresponding 	files under its document root directory.
+> **Note:** If you want to update changes for the application, you must replace the corresponding 	files under its document root directory.
 http://elvmae036.nwie.net:8080/HelloWorld/
 
   [1]: http://tomcat.apache.org/download-90.cgi
