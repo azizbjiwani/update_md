@@ -53,17 +53,17 @@ Apache Tomcat 9 Directories You’ll see the following files and directories und
 $ pwd /opt/mw/tomcat90 
 $ ls -ltr 
 ```
-> total 144 
-drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:10 work 
-drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:10 logs 
-drwxr-xr-x 7 wasadmin wasadmin 4096 Jun 3 13:11 webapps -rwxr-xr-x 1 wasadmin wasadmin 16262 Jun 3 13:13 RUNNING.txt -rwxr-xr-x 1 wasadmin wasadmin 6898 Jun 3 13:13 RELEASE-NOTES 
--rwxr-xr-x 1 wasadmin wasadmin 3255 Jun 3 13:13 README.md 
--rwxr-xr-x 1 wasadmin wasadmin 2333 Jun 3 13:13 NOTICE 
--rwxr-xr-x 1 wasadmin wasadmin 57092 Jun 3 13:13 LICENSE -rwxr-xr-x 1 wasadmin wasadmin 5409 Jun 3 13:13 CONTRIBUTING.md 
-drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:13 conf 
--rwxr-xr-x 1 wasadmin wasadmin 18982 Jun 3 13:13 BUILDING.txt drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 24 14:27 temp 
-drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 24 14:27 lib 
-drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 24 14:27 bin
+> total 144  
+drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:10 work  
+drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:10 logs  
+drwxr-xr-x 7 wasadmin wasadmin 4096 Jun 3 13:11 webapps -rwxr-xr-x 1 wasadmin wasadmin 16262 Jun 3 13:13 RUNNING.txt -rwxr-xr-x 1 wasadmin wasadmin 6898 Jun 3 13:13 RELEASE-NOTES  
+-rwxr-xr-x 1 wasadmin wasadmin 3255 Jun 3 13:13 README.md  
+-rwxr-xr-x 1 wasadmin wasadmin 2333 Jun 3 13:13 NOTICE  
+-rwxr-xr-x 1 wasadmin wasadmin 57092 Jun 3 13:13 LICENSE -rwxr-xr-x 1 wasadmin wasadmin 5409 Jun 3 13:13 CONTRIBUTING.md  
+drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 3 13:13 conf  
+-rwxr-xr-x 1 wasadmin wasadmin 18982 Jun 3 13:13 BUILDING.txt drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 24 14:27 temp  
+drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 24 14:27 lib  
+drwxr-xr-x 2 wasadmin wasadmin 4096 Jun 24 14:27 bin  
 
 Set Apache Tomcat CATALINA_HOME The home environment variable that is used inside the Apache tomcat script is called as CATALINA_HOME. Catalina refers to Tomcat. Set this variable to the full directory of the apache tomcat that we extracted earlier as shown below. 
 ```sh
